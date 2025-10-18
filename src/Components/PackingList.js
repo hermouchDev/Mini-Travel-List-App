@@ -1,29 +1,35 @@
-// const initialItems = [
-//     { id: 1, description: "Passports", quantity: 2, packed: false },
-//     { id: 2, description: "Socks", quantity: 12, packed: true },
-//     { id: 3, description: "Laptop", quantity: 1, packed: true },
-// ];
+function PackingList({ items, onDeletItem, onToggleItem }) {
+    // console.log(items)
 
-function PackingList({items}) {
-    // const travelList = [...initialItems, ...items];
-    console.log(items)
     return (
         <div className="list">
             <ul>
-                {
-                    items.map((item, index) => <Item item={item} key={index}/>)
-                }
+                {items.map((item) => (
+                    <Item
+                        item={item}
+                        onDeletItem={onDeletItem}
+                        onToggleItem={onToggleItem}
+                        key={item.id}
+                    />
+                ))}
             </ul>
         </div>
     );
 }
 
-function Item({item}) {
+function Item({ item, onDeletItem, onToggleItem }) {
     return (
         <li>
-            <input type="checkbox" />
-            <span style={item.packed ? {textDecoration: "line-through"} : {} }>{item.quantity} {item.description}</span>
-            <button>❌</button>
+            <input
+                type="checkbox"
+                checked={item.packed}
+                value={item.id}
+                onChange={() => onToggleItem(item.id)}
+            />
+            <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+                {item.quantity} {item.description}
+            </span>
+            <button onClick={() => onDeletItem(item.id)}>❌</button>
         </li>
     );
 }
