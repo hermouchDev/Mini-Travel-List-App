@@ -13,7 +13,7 @@ function Form({onAddItem}) {
             id : Date.now(), 
             description : desc, 
             quantity : quantity, 
-            picked : false
+            packed : false
         };
         // console.log(newItem);
 
@@ -39,7 +39,7 @@ function Form({onAddItem}) {
                 onChange={(e) => setDesc(e.target.value)} 
                 placeholder="Enter what you need ..." />
             <button>Add</button>
-        </form>
+        </form> 
     );
 }
 

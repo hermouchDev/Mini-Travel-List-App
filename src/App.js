@@ -24,14 +24,15 @@ function App() {
                 );
                 return [...prevItems];
             }
-            alert("Added ✅");
+            // alert("Added ✅");
             return [...prevItems, newItem];
         });
         // console.log(items);
     }
 
     function handleDeletItem(id) {
-        setItems((items) => items.filter((item) => item.id !== id));
+        const confirmed = window.confirm('Are you sure you want to delet the item 🤔 ? ');
+        confirmed && setItems((items) => items.filter((item) => item.id !== id));
     }
 
     function handleToggleItem(id) {
@@ -42,11 +43,15 @@ function App() {
         );
     }
 
+    function handleClearList() {
+        const confirmed = window.confirm('Are you sure you want to delet all items 🤔 ? ');
+        confirmed && setItems([]);
+    }
     return (
         <div className="app">
             <Logo />
             <Form onAddItem={handleAddItem} />
-            <PackingList items={items} onDeletItem={handleDeletItem} onToggleItem={handleToggleItem} />
+            <PackingList items={items} onDeletItem={handleDeletItem} onToggleItem={handleToggleItem} clearList={handleClearList} />
             <Stats items={items} />
         </div>
     );
