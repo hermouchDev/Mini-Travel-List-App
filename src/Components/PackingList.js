@@ -39,7 +39,7 @@ function PackingList({ items, onDeletItem, onToggleItem, clearList }) {
                 {items.length === 0 ? null : (
                     <button onClick={clearList}>Clear List</button>
                 )}
-            </div>
+             </div>
         </div>
     );
 }

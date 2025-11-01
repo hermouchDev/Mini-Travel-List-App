@@ -47,6 +47,7 @@ function App() {
         const confirmed = window.confirm('Are you sure you want to delet all items 🤔 ? ');
         confirmed && setItems([]);
     }
+
     return (
         <div className="app">
             <Logo />
